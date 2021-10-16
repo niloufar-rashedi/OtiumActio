@@ -1,0 +1,100 @@
+﻿@model IEnumerable<OtiumActio.Models.Activity>
+<div>
+    @using (Html.BeginForm())
+    {
+    <div class="row" >
+        <div class="col" style="max-width: 300px;">
+            @Html.TextBox("search") <input type="submit" name="submit" value="Sök efter beskrivning" class="col" />
+        </div>
+    </div>
+    }
+    @using (Html.BeginForm())
+    {
+
+        <div style="max-width: 300px;">
+            <p>Sortera efter datum</p>
+            Från <input type="text" id="startDate" name="startDate" class="startDate form-control" />
+            Till <input type="text" id="endDate" name="endDate" class="endDate form-control" />
+            <input type="submit" value="Sök" class="btn btn-dark" />
+        </div>
+    }
+
+    @if (Model.Count() == 0)
+    {
+        <table id="activities">
+            <thead>
+                <tr>
+                    Ingen aktivitet hittades!
+                </tr>
+            </thead>
+        </table>
+
+    }
+    else
+    {
+
+        <table id="activities">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.ActionLink("Kategori", "Index", new { sort = "sotyByCategory" })
+                    </th>
+                    <th>
+                        Beskrivning
+                    </th>
+                    <th>Antal deltagande</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var list in Model)
+                {
+                    <tr>
+                        <td>@list.CategoryName</td>
+                        <td>@list.Description</td>
+                        <td>@list.Participants</td>
+                        <td>@list.Date.ToShortDateString()</td>
+                        <td>
+                            @Html.ActionLink("Redigera", "Update", "Activity", new { id = list.Id }, null) |
+                            @Html.ActionLink("Radera", "Delete", "Activity", new { id = list.Id })
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+
+    <div class="container" style="text-align: center">
+        <a asp-controller="SuggestedActivity" asp-action="Index">Skapa en ny aktivitet</a>
+
+    </div>
+
+</div>
+@section scripts
+    {
+    <script type="text/javascript">
+            $(function () {
+                $(".startDate").datepicker({
+                    autoclose: true,
+                    format: 'dd/mm/yyyy'
+                }).on('changeDate', function (selected) {
+                    var minDate = new Date(selected.date);
+                    minDate.setDate(minDate.getDate() + 1);
+                    $('.endDate').datepicker('setStartDate', minDate);
+                });
+
+                $(".endDate").datepicker({
+                    autoclose: true,
+                    format: 'dd/mm/yyyy'
+                }).on('changeDate', function (selected) {
+                    var minDate = new Date(selected.date);
+                    minDate.setDate(minDate.getDate() - 1);
+                    $('.startDate').datepicker('setEndDate', minDate);
+                });
+            });
+    </script>
+}
+
+

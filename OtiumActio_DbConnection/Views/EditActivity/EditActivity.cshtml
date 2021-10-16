@@ -1,0 +1,62 @@
+﻿@model OtiumActio.Models.Activity
+<div>
+    @using (Html.BeginForm("UpdateActivity", "EditActivity", FormMethod.Post, new { id = "updatedactivities", enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <fieldset>
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.LabelFor(model => model.Categories, new { @class = "control-label col-md-2" })
+        <div class="col-md-10 editor-label">
+            @Html.DropDownList("Categories", (IEnumerable
+        <SelectListItem>)ViewData["SelectableCategories"], new { @Value = Model.CategoryName })
+
+        </div>
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10 editor-label">
+            @Html.EditorFor(model => model.Description, new { @Value = Model.Description })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        @Html.LabelFor(model => model.Participants, new { @class = "control-label col-md-2" })
+        <div class="col-md-10 editor-label">
+            @Html.EditorFor(model => model.Participants, new { @Value = Model.Participants })
+            @Html.ValidationMessageFor(model => model.Participants, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
+        <div class="col-md-10 editor-label">
+            @Html.EditorFor(model => model.Date, new { @class = "date", @Value = Model.Date })
+        </div>
+
+
+        <div class="col-md-10" style="margin-top: 15px">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+
+
+    </fieldset>
+
+    }
+    @*<div id="snackbar">
+            <p>@TempData["Success"]</p>
+        </div>*@
+    <div id="displayAllActivities" style="display: none;">
+        <p>Tack för att förslå en ny aktivitet!</p>
+    </div>
+
+</div>
+@section scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script>
+            //$(document).ready(function () {
+
+                $('#addactivities').submit(function () {
+                    $('#displayAllActivities').show()
+                //$(this).find(':submit').prop('disabled', 'false');
+            });
+
+            //};
+    </script>
+}
+
+

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OtiumActio.Models.Category>
+@{
+    ViewData["Title"] = "Otium Actio";
+}
+<div>
+
+
+    <div class="text-center">
+        <h1 class="display-4 ">Otium Actio</h1>
+        <h3>Ett latiskt ord för Fritidsaktivitet.</h3>
+        <h4>Ett nätverk för gemensamma aktiviteter. Skapa din egen, om det inte finns en här!</h4>
+    </div>
+    <div class="text-center">
+        <a asp-controller="Activity" asp-action="Index">Klicka här för att se kommande aktiviteter</a>
+
+    </div>
+    <div class="text-center" style="margin-bottom: 15px;">
+        <button class="btn btn-primary btn-lg" type="button" id="allActivities">Kolla vad du har redan skapat</button>
+    </div>
+    <div id="listOfActivities" class="text-center"></div>
+    <div>
+        <p>All categories get through DAL </p>
+        @foreach (var item in Model)
+        {
+            <b>@item.Name</b>
+
+        }
+    </div>
+
+</div>
+@section scripts
+    {
+    <script>
+            $(document).ready(function () {
+                $("#allActivities").click(function () {
+                    $("#listOfActivities").load('@Url.Action("GetAllActivities", "SuggestedActivity")');
+                })
+            });
+    </script>
+}
+

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<OtiumActio.Models.ActivityViewModel>
+@if (Model != null && Model.Count() > 0)
+{
+    <div>
+        <table id="activities">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Beskrivning</th>
+                    <th>Antal deltagande</th>
+                    <th>Datum</th>
+                    <th>Inte nöjd?!</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => m.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => m.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => m.Participants)</td>
+                    <td>@Html.DisplayFor(modelItem => m.Date)</td>
+                    <td>
+                        @Html.ActionLink("Ta bort!", "Delete", "SuggestedActivity", new { id = m.Id })
+                    </td>
+
+                </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+else
+{
+    <div id="snackbar">
+        <p>@TempData["Deleted"]</p>
+    </div>
+
+    <div class="text-lg-center">
+        <p>Ingen aktivitet i listan!</p>
+    </div>
+}
+@section scripts
+    {
+    <script>
+            $(document).ready(function () {
+                $("#deleteActivity").click(function () {
+                    //$("#snackbar").load('@Url.Action("DeleteSelectedActivity", "SuggestedActivity")');
+                })
+            var deleted = @((TempData["Deleted"] != null).ToString().ToLower());
+                if (deleted == true) {
+                snackbarFunction();
+                //$('#displayAllActivities').load('@Url.Action("GetAllActivities", "SuggestedActivity")');
+                }
+                function snackbarFunction() {
+                    var x = document.getElementById("snackbar");
+                    x.className = "show";
+                    setTimeout(function () {
+                        x.className = x.className.replace("show", "");
+
+                    }, 20000);
+                }
+
+            });
+    </script>
+}
+
+
