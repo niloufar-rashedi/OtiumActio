@@ -1,37 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OtiumActio.Interfaces;
+using OtiumActio.Domain.Interfaces;
 using OtiumActio.Domain.Activities;
 
 namespace OtiumActio.Controllers
 {
     public class ActivityController : Controller
     {
-        private IEditActivityController _service;
-        public ActivityController(IEditActivityController service)
+        //private IEditActivityController _service;
+        private readonly IRepository<Activity> _repository;
+        //public ActivityController(IEditActivityController service)
+        //{
+        //    _service = service;
+        //}
+        public ActivityController(IRepository<Activity> repository)
         {
-            _service = service;
+            _repository = repository;
         }
-        public IActionResult Index(string search, string sort, string startDate, string endDate)
-        {
-            //DataAccessLayer adl = new DataAccessLayer();
-            //var allActivities = adl.Activities.ToList();
+        //public IActionResult Index(string search, string sort, string startDate, string endDate)
+        //{
+        //DataAccessLayer adl = new DataAccessLayer();
+        //var allActivities = adl.Activities.ToList();
 
-            //if (!string.IsNullOrEmpty(search))
-            //{
-            //    return View("Activity", allActivities.Where(d=>d.Description.Contains(search)));
-            //}
-            //if (!string.IsNullOrEmpty(sort))
-            //{
-            //    return View("Activity", allActivities.OrderBy(c => c.CategoryName));
-            //}
-            //if (!string.IsNullOrEmpty(startDate) && !string.IsNullOrEmpty(endDate))
-            //{
-            //    DateTime sDate = Convert.ToDateTime(startDate);
-            //    DateTime eDate = Convert.ToDateTime(endDate);
-            //    return View("Activity", allActivities.Where(date => date.Date <= eDate && date.Date >= sDate).ToList());
-            //}
-            return View();
-                //View("Activity", allActivities);
+        //if (!string.IsNullOrEmpty(search))
+        //{
+        //    return View("Activity", allActivities.Where(d=>d.Description.Contains(search)));
+        //}
+        //if (!string.IsNullOrEmpty(sort))
+        //{
+        //    return View("Activity", allActivities.OrderBy(c => c.CategoryName));
+        //}
+        //if (!string.IsNullOrEmpty(startDate) && !string.IsNullOrEmpty(endDate))
+        //{
+        //    DateTime sDate = Convert.ToDateTime(startDate);
+        //    DateTime eDate = Convert.ToDateTime(endDate);
+        //    return View("Activity", allActivities.Where(date => date.Date <= eDate && date.Date >= sDate).ToList());
+        //}
+        //return View();
+        //View("Activity", allActivities);
+        //}
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var model = _repository.GetAll();
+            return View("Activity", model);
         }
         public IActionResult Delete(Activity activity)
         {
@@ -50,7 +61,7 @@ namespace OtiumActio.Controllers
         public void Update(Activity activity)
         {
             ///Activity/Update/30
-            _service.Edit(activity.AcId);
+            //_service.Edit(activity.AcId);
         }
     }
 }

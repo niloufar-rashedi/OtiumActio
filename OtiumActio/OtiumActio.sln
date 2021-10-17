@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio", "OtiumActio.cs
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OtiumActio.Database", "..\OtiumActio_DbProject\OtiumActio.Database\OtiumActio.Database.sqlproj", "{C52AE9E4-4061-4286-825C-44A62AD112C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Domain", "..\OtiumActio.Models\OtiumActio.Domain.csproj", "{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Domain", "..\OtiumActio.Domain\OtiumActio.Domain.csproj", "{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtiumActio.Infrastructure", "..\OtiumActio.Infrastructure\OtiumActio.Infrastructure.csproj", "{59B410D5-84DE-4A79-8207-AC5CF5DC5403}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B410D5-84DE-4A79-8207-AC5CF5DC5403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B410D5-84DE-4A79-8207-AC5CF5DC5403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B410D5-84DE-4A79-8207-AC5CF5DC5403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B410D5-84DE-4A79-8207-AC5CF5DC5403}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

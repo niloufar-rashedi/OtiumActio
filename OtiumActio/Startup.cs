@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using OtiumActio.Interfaces;
 using OtiumActio.Controllers;
+using OtiumActio.Domain.Interfaces;
+using OtiumActio.Infrastructure;
 
 namespace OtiumActio
 {
@@ -24,8 +26,8 @@ namespace OtiumActio
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<ActivityContext>(options =>
-              //  options.UseSqlServer(Configuration.GetConnectionString("OtiumActio")));
+            services.AddDbContext<OtiumActioContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("OtiumActio")));
 
             services.AddSession(options => {
                 options.Cookie.Name = ".List.Session";
@@ -33,7 +35,7 @@ namespace OtiumActio
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            //services.AddScoped<IDataAccessLayer, DataAccessLayer>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IEditActivityController, EditActivityController>();
             services.AddHttpContextAccessor();
         }
