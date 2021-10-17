@@ -9,6 +9,14 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OtiumActio.Database", "..\O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Models", "..\OtiumActio.Models\OtiumActio.Models.csproj", "{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{774D9F26-286C-4B50-BA86-91EED5DC1174}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{F8C13A93-B4A4-4DDB-81E2-269AED6C3144}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{05512D20-8E20-4277-A6B9-D6A17FC9CAC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseCatalogue", "DatabaseCatalogue", "{A49C1C97-010E-4D9E-965F-63A234E20FBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F1ACC15-E519-4A45-9822-69C69BC5B8B8} = {774D9F26-286C-4B50-BA86-91EED5DC1174}
+		{C52AE9E4-4061-4286-825C-44A62AD112C9} = {A49C1C97-010E-4D9E-965F-63A234E20FBD}
+		{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27} = {05512D20-8E20-4277-A6B9-D6A17FC9CAC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE85378C-F3E9-426E-B4BD-072FD344784F}

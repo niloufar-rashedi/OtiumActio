@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OtiumActio.DAL;
 using OtiumActio.Models;
 using System;
 using System.Collections.Generic;
@@ -18,45 +17,46 @@ namespace OtiumActio.Controllers
         //}
         public IActionResult Index()
         {
-            DataAccessLayer adl = new DataAccessLayer();
-            var allCategories = adl.Categories.ToList();
-            List<SelectListItem> categories = new List<SelectListItem>();
-            foreach (var category in allCategories)
-            {
-                categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
-            }
-            ViewData["SelectableCategories"] = categories;
-
-            return View("SuggestedActivity");
+            //DataAccessLayer adl = new DataAccessLayer();
+            //var allCategories = adl.Categories.ToList();
+            //List<SelectListItem> categories = new List<SelectListItem>();
+            //foreach (var category in allCategories)
+            //{
+            //    categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
+            //}
+            //ViewData["SelectableCategories"] = categories;
+            return View();
+            //return View("SuggestedActivity");
         }
         [HttpPost]
         public IActionResult AddNewActivity(ActivityViewModel model)
         {
-            DataAccessLayer adl = new DataAccessLayer();
-            if (ModelState.IsValid)
-            {
-            var activity = new Activity
-            {
-                //Id = 6,
-                Category = (int)model.Category, 
-                Description = model.Description,
-                Participants = model.Participants,
-                Date = model.Date
+            //DataAccessLayer adl = new DataAccessLayer();
+            //if (ModelState.IsValid)
+            //{
+            //var activity = new Activity
+            //{
+            //    //Id = 6,
+            //    Category = (int)model.Category, 
+            //    Description = model.Description,
+            //    Participants = model.Participants,
+            //    Date = model.Date
 
-            };
-            adl.AddActivity(activity);
-            ModelState.Clear();
-            }
+            //};
+            //adl.AddActivity(activity);
+            //ModelState.Clear();
+            //}
 
-            var allCategories = adl.Categories.ToList();
-            List<SelectListItem> categories = new List<SelectListItem>();
-            foreach (var category in allCategories)
-            {
-                categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
-            }
-            ViewData["SelectableCategories"] = categories;
+            //var allCategories = adl.Categories.ToList();
+            //List<SelectListItem> categories = new List<SelectListItem>();
+            //foreach (var category in allCategories)
+            //{
+            //    categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
+            //}
+            //ViewData["SelectableCategories"] = categories;
 
-            return View("SuggestedActivity");
+            //return View("SuggestedActivity");
+            return View();
         }
         [HttpGet]
         public IActionResult GetAllActivities()

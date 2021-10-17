@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using OtiumActio.Data;
-using OtiumActio.DAL;
 using OtiumActio.Interfaces;
 using OtiumActio.Controllers;
 
@@ -35,7 +34,7 @@ namespace OtiumActio
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            services.AddScoped<IDataAccessLayer, DataAccessLayer>();
+            //services.AddScoped<IDataAccessLayer, DataAccessLayer>();
             services.AddScoped<IEditActivityController, EditActivityController>();
             services.AddHttpContextAccessor();
         }

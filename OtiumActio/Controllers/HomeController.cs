@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OtiumActio.DAL;
 using OtiumActio.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OtiumActio.Controllers
 {
@@ -21,9 +15,10 @@ namespace OtiumActio.Controllers
 
         public IActionResult Index()
         {
-            DataAccessLayer adl = new DataAccessLayer();
-            List<Category> cats = adl.Categories.ToList();
-            return View(cats);
+            //DataAccessLayer adl = new DataAccessLayer();
+            //List<Category> cats = adl.Categories.ToList();
+            //return View(cats);
+            return View();
         }
 
         public IActionResult Privacy()
