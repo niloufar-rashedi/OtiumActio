@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio", "OtiumActio.cs
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OtiumActio.Database", "..\OtiumActio_DbProject\OtiumActio.Database\OtiumActio.Database.sqlproj", "{C52AE9E4-4061-4286-825C-44A62AD112C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Models", "..\OtiumActio.Models\OtiumActio.Models.csproj", "{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Domain", "..\OtiumActio.Models\OtiumActio.Domain.csproj", "{12B5A41E-2D36-4FDC-AFD4-79553A1B8F27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

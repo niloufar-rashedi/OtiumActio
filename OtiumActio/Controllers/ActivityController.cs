@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OtiumActio.Models;
 using OtiumActio.Interfaces;
+using OtiumActio.Domain.Activities;
 
 namespace OtiumActio.Controllers
 {
@@ -50,7 +50,7 @@ namespace OtiumActio.Controllers
         public void Update(Activity activity)
         {
             ///Activity/Update/30
-            _service.Edit(activity.Id);
+            _service.Edit(activity.AcId);
         }
     }
 }

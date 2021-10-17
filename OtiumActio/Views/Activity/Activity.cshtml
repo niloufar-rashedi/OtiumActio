@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OtiumActio.Models.Activity>
+﻿@model IEnumerable<OtiumActio.Domain.Activities.Activity>
 <div>
     @using (Html.BeginForm())
     {
@@ -50,13 +50,13 @@
                 @foreach (var list in Model)
                 {
                     <tr>
-                        <td>@list.CategoryName</td>
-                        <td>@list.Description</td>
+                        <td>@list.AcCategory.CatName</td>
+                        <td>@list.AcDescription</td>
                         <td>@list.Participants</td>
-                        <td>@list.Date.ToShortDateString()</td>
+                        <td>@list.AcDate</td>
                         <td>
-                            @Html.ActionLink("Redigera", "Update", "Activity", new { id = list.Id }, null) |
-                            @Html.ActionLink("Radera", "Delete", "Activity", new { id = list.Id })
+                            @Html.ActionLink("Redigera", "Update", "Activity", new { id = list.AcId }, null) |
+                            @Html.ActionLink("Radera", "Delete", "Activity", new { id = list.AcId })
                         </td>
 
                     </tr>

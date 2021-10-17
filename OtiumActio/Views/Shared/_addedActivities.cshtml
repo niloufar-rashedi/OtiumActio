@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OtiumActio.Models.ActivityViewModel>
+﻿@model IEnumerable<OtiumActio.Domain.Activities.Activity>
 @if (Model != null && Model.Count() > 0)
 {
     <div>
@@ -16,12 +16,12 @@
                 @foreach (var m in Model)
                 {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => m.Category)</td>
-                    <td>@Html.DisplayFor(modelItem => m.Description)</td>
-                    <td>@Html.DisplayFor(modelItem => m.Participants)</td>
-                    <td>@Html.DisplayFor(modelItem => m.Date)</td>
+                    <td>@Html.DisplayFor(modelItem => m.AcCategory)</td>
+                    <td>@Html.DisplayFor(modelItem => m.AcDescription)</td>
+                    <td>@Html.DisplayFor(modelItem => m.AcParticipants)</td>
+                    <td>@Html.DisplayFor(modelItem => m.AcDate)</td>
                     <td>
-                        @Html.ActionLink("Ta bort!", "Delete", "SuggestedActivity", new { id = m.Id })
+                        @Html.ActionLink("Ta bort!", "Delete", "SuggestedActivity", new { id = m.AcId })
                     </td>
 
                 </tr>

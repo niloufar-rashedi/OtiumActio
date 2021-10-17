@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OtiumActio.Models;
+using OtiumActio.Domain.Activities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace OtiumActio.Controllers
 {
     public class SuggestedActivityController : Controller
     {
-        private static List<ActivityViewModel> ListOfAllActivities = new List<ActivityViewModel>();
+        //private static List<ActivityViewModel> ListOfAllActivities = new List<ActivityViewModel>();
         //private readonly DataAccessLayer _dataAccess;
         //public SuggestedActivityController(DataAccessLayer dataAccess)
         //{
@@ -29,7 +29,7 @@ namespace OtiumActio.Controllers
             //return View("SuggestedActivity");
         }
         [HttpPost]
-        public IActionResult AddNewActivity(ActivityViewModel model)
+        public IActionResult AddNewActivity(Activity model)
         {
             //DataAccessLayer adl = new DataAccessLayer();
             //if (ModelState.IsValid)
@@ -62,21 +62,21 @@ namespace OtiumActio.Controllers
         public IActionResult GetAllActivities()
         {
             Response.Cookies.Append("Cookie", "listFetched");
-            return PartialView("_addedActivities", ListOfAllActivities);
+            return PartialView("_addedActivities");
         }
         [HttpPost]
         public IActionResult Delete(long id)
         {
-            try
-            {
-                ListOfAllActivities.Remove(ListOfAllActivities.Where(l => l.Id == id).FirstOrDefault());
-                TempData["Deleted"] = "Aktiviteten togs bort.";
+            //try
+            //{
+            //    ListOfAllActivities.Remove(ListOfAllActivities.Where(l => l.Id == id).FirstOrDefault());
+            //    TempData["Deleted"] = "Aktiviteten togs bort.";
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
             return RedirectToAction("Index");
         }
         public string Get(string key)

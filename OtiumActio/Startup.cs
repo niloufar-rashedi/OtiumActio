@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
-using OtiumActio.Data;
 using OtiumActio.Interfaces;
 using OtiumActio.Controllers;
 
@@ -25,8 +24,8 @@ namespace OtiumActio
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ActivityContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("OtiumActio")));
+            //services.AddDbContext<ActivityContext>(options =>
+              //  options.UseSqlServer(Configuration.GetConnectionString("OtiumActio")));
 
             services.AddSession(options => {
                 options.Cookie.Name = ".List.Session";

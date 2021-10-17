@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OtiumActio.Models.Category>
+﻿@model IEnumerable<OtiumActio.Domain.Categories.Category>
 @{
     ViewData["Title"] = "Otium Actio";
 }
@@ -19,12 +19,12 @@
     </div>
     <div id="listOfActivities" class="text-center"></div>
     <div>
-        <p>All categories get through DAL </p>
+        @*<p>All categories get through DAL </p>
         @foreach (var item in Model)
         {
-            <b>@item.Name</b>
+            <b>@item.AcName</b>
 
-        }
+        }*@
     </div>
 
 </div>

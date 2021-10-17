@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OtiumActio.Models;
+using OtiumActio.Domain.Activities;
 using OtiumActio.Interfaces;
 
 namespace OtiumActio.Controllers
