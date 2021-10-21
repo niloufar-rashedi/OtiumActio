@@ -25,8 +25,7 @@ namespace OtiumActio.Controllers
             //    categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
             //}
             //ViewData["SelectableCategories"] = categories;
-            return View();
-            //return View("SuggestedActivity");
+            return View("SuggestedActivity");
         }
         [HttpPost]
         public IActionResult AddNewActivity(Activity model)
