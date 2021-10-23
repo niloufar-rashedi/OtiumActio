@@ -28,7 +28,7 @@ namespace OtiumActio.IdentityServer
                 //.AddTestUsers(new List<TestUser>())
                 .AddTestUsers(Config.Users)
                 .AddDeveloperSigningCredential();
-
+            services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
@@ -55,7 +55,7 @@ namespace OtiumActio.IdentityServer
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

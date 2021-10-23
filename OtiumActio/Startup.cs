@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
 using System;
 using OtiumActio.Interfaces;
 using OtiumActio.Controllers;
@@ -25,6 +26,27 @@ namespace OtiumActio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "cookie";
+                options.DefaultChallengeScheme = "oidc";
+            })
+                .AddCookie("cookie")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.Authority = Configuration["InteractiveServiceSettings:AuthorityUrl"];
+                    options.ClientId = Configuration["InteractiveServiceSettings:ClientId"];
+                    options.ClientSecret = Configuration["InteractiveServiceSettings:ClientSecret"];
+
+                    options.ResponseType = "code";
+                    options.UsePkce = true;
+                    options.ResponseMode = "query";
+
+                    options.Scope.Add(Configuration["InteractiveServiceSettings:Scopes:0"]);
+                    options.SaveTokens = true;
+                });
+            services.Configure<IdentityServerSettings>(Configuration.GetSection("IdentityServerSettings"));
+            services.AddSingleton<ITokenService, TokenService>();
 
             services.AddDbContext<OtiumActioContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("OtiumActio")));
@@ -57,7 +79,7 @@ namespace OtiumActio
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

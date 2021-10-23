@@ -1,0 +1,19 @@
+﻿@model IEnumerable<OtiumActio.Models.WeatherData>
+
+<div>
+    <h1>
+        weather data from API
+    </h1>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Summary</td>
+                <td>@item.TemperatureC</td>
+                <td>@item.Date</td>
+                <td>@item.TemperatureF</td>
+
+            </tr>
+        }
+    </table>
+</div>

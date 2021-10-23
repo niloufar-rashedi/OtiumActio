@@ -137,10 +137,10 @@ namespace OtiumActio.IdentityServer
 
                     //ClientName = "Interactive client (Code with PKCE)",
 
-                    RedirectUris = { "https://localhost:44383/signin-oidc" },
+                    RedirectUris = { "https://localhost:44370/signin-oidc" },
                     //I added Front channel
-                    FrontChannelLogoutUri=  "https://localhost:44383/signout-oidc" ,
-                    PostLogoutRedirectUris = { "https://localhost:44383/signout-callback-oidc" },
+                    FrontChannelLogoutUri=  "https://localhost:44370/signout-oidc" ,
+                    PostLogoutRedirectUris = { "https://localhost:44370/signout-callback-oidc" },
 
                     AllowedScopes = { "openid", "profile", "otiumactio.read", "email", "api", "api.scope1", "api.scope2", "scope2" },
 

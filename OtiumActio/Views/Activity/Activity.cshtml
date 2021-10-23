@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<OtiumActio.Domain.Activities.Activity>
 <div>
+    <div>
+        <p>Fetching data from Authorized api: @Html.ActionLink("Weather", "Weather")</p>
+    </div>
     @using (Html.BeginForm())
     {
     <div class="row" >
@@ -50,7 +53,7 @@
                 @foreach (var list in Model)
                 {
                     <tr>
-                        <td>@list.AcCategory.CatName</td>
+                        @*<td>@list.AcCategory.CatName</td>*@
                         <td>@list.AcDescription</td>
                         <td>@list.Participants</td>
                         <td>@list.AcDate</td>
