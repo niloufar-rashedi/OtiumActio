@@ -7,13 +7,13 @@ using System.Linq;
 
 #nullable disable
 
-namespace OtiumActio
+namespace OtiumActio.Infrastructure
 {
     public partial class OtiumActioContext : DbContext
     {
-        public OtiumActioContext()
-        {
-        }
+        //public OtiumActioContext()
+        //{
+        //}
 
         public OtiumActioContext(DbContextOptions<OtiumActioContext> options)
             : base(options)
