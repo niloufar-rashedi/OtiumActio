@@ -41,12 +41,6 @@ namespace OtiumActio.IdentityServer
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
-                //.AddInMemoryClients(Config.GetClients())
-                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
-                //.AddInMemoryApiResources(Config.GetApis())
-                //.AddInMemoryApiScopes(Config.GetApiScopes())
-                //.AddTestUsers(new List<TestUser>())
-                //.AddTestUsers(Config.Users)
                 .AddAspNetIdentity<IdentityUser>()
                 .AddConfigurationStore(options =>
                 {
@@ -60,9 +54,7 @@ namespace OtiumActio.IdentityServer
                 })
                 .AddDeveloperSigningCredential();
 
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
-            //services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

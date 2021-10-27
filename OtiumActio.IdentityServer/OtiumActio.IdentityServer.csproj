@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OtiumActio.Infrastructure\OtiumActio.Infrastructure.csproj" />
-    <ProjectReference Include="..\OtiumActio\OtiumActio.csproj" />
   </ItemGroup>
 
 </Project>
