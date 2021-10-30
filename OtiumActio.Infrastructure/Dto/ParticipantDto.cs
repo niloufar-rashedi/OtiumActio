@@ -2,12 +2,11 @@
 using OtiumActio.Domain.Categories;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
-#nullable disable
-
-namespace OtiumActio.Domain.Users
+namespace OtiumActio.Infrastructure.Dto
 {
-    public partial class Participant
+    public class ParticipantDto
     {
         public int PrtcId { get; set; }
         public int? PrtcActivityId { get; set; }
@@ -16,11 +15,11 @@ namespace OtiumActio.Domain.Users
         public int? PrtcAge { get; set; }
         public int? PrtcFavouritCategory { get; set; }
         public string PrtcUserName { get; set; }
-        public byte[] PrtcPasswordHash { get; set; }
-        public byte[] PrtcPasswordSalt { get; set; }
-        public DateTime? PrtcCreated { get; set; }
-        public DateTime? PrtcModified { get; set; }
+        public string PrtcPassword { get; set; }
+        public string PrtcConfirmPassword { get; set; }
+
         public virtual Activity PrtcActivity { get; set; }
         public virtual Category PrtcFavouritCategoryNavigation { get; set; }
+
     }
 }

@@ -25,4 +25,8 @@
     <ProjectReference Include="..\OtiumActio.Domain\OtiumActio.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

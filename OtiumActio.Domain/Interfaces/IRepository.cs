@@ -8,7 +8,7 @@ namespace OtiumActio.Domain.Interfaces
     public interface IRepository<T> where T : class
     {
         void Add(T entity);
-        void Delete(T entity);
+        void Delete(object id);
         void Update(T entity);
         //IQueryable List (Expression<Func<T, bool>> expression);
         IEnumerable<T> GetAll();

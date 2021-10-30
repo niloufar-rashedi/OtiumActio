@@ -141,6 +141,24 @@ namespace OtiumActio.Infrastructure
                     .WithMany(p => p.Participants)
                     .HasForeignKey(d => d.PrtcFavouritCategory)
                     .HasConstraintName("FK__Tbl_Parti__Prtc___797309D9");
+    //            entity.Property(e => e.PrtcUserName)
+    //                .HasMaxLength(50)
+    //                .IsUnicode(false);
+
+    //            entity.Property(e => e.PrtcPasswordHash)
+    //                .HasColumnType("binary")
+    //                .HasColumnName("Prtc_PasswordHash");
+    //            entity.Property(e => e.PrtcPasswordSalt)
+    //.HasColumnType("binary")
+    //.HasColumnName("Prtc_PrtcPasswordSalt");
+
+    //            entity.Property(e => e.PrtcCreated)
+    //                .HasColumnType("datetime")
+    //                .HasColumnName("Prtc_Created");
+
+    //            entity.Property(e => e.PrtcModified)
+    //                .HasColumnType("datetime")
+    //                .HasColumnName("Prtc_Modified");
             });
 
             OnModelCreatingPartial(modelBuilder);

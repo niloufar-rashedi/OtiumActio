@@ -9,55 +9,50 @@ namespace OtiumActio.Infrastructure
     public class Repository<T> : IRepository<T> where T : class
     {
 
-        //private readonly DbFactory _dbFactory;
-        //private DbSet _dbSet;
-        //protected DbSet DbSet
-        //{
-        //    get => _dbSet ?? (_dbSet = _dbFactory.DbContext.Set());
-        //}
-        //public Repository(DbFactory dbFactory)
-        //{
-        //    _dbFactory = dbFactory;
-        //}
-        private readonly OtiumActioContext _otiumActioContex;
-        private readonly DbSet<T> _tablel;
+
+        private readonly OtiumActioContext _context;
+        private readonly DbSet<T> _table;
         public Repository(OtiumActioContext otiumActioContext)
         {
-            _otiumActioContex = otiumActioContext;
-            _tablel = _otiumActioContex.Set<T>();
+            _context = otiumActioContext;
+            _table = _context.Set<T>();
         }
         public void Add(T entity)
         {
-            throw new System.NotImplementedException();
+            _table.Add(entity);
+            Save();
         }
 
-        public void Delete(T entity)
+        public void Delete(object id)
         {
-            throw new System.NotImplementedException();
+            T existing = _table.Find(id);
+            _table.Remove(existing);
+            Save();
+
         }
 
         public void Update(T entity)
         {
-            throw new System.NotImplementedException();
+            _table.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            Save();
+
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _tablel.ToList();
+            return _table.ToList();
         }
 
         T IRepository<T>.GetById(object id)
         {
-            throw new NotImplementedException();
+            return _table.Find(id);
         }
 
-        void IRepository<T>.Save()
+        public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
-        //public IQueryable List(Expression<Func<T, bool>> expression)
-        //{
-        //    return DbSet.Where(expression);
-        //}
+
     }
 }
