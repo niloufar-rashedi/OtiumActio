@@ -1,0 +1,55 @@
+﻿@model OtiumActio.Models.Activity
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("AddNewActivity", "SuggestedActivity", FormMethod.Post, new { id = "addactivities", enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <fieldset>
+                @Html.LabelFor(model => model.AcCategory, new { @class = "control-label col-md-2" })
+                <div class="col-md-10 editor-label">
+                    @Html.DropDownList("AcCategoryId", (IEnumerable
+                <SelectListItem>)ViewData["SelectableCategories"])
+
+                </div>
+                @Html.LabelFor(model => model.AcDescription, new { @class = "control-label col-md-2" })
+                <div class="col-md-10 editor-label">
+                    @Html.EditorFor(model => model.AcDescription)
+                    @Html.ValidationMessageFor(model => model.AcDescription, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Participants, new { @class = "control-label col-md-2" })
+                <div class="col-md-10 editor-label">
+                    @Html.EditorFor(model => model.AcParticipants)
+                    @Html.ValidationMessageFor(model => model.AcParticipants, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.AcDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10 editor-label">
+                    @Html.EditorFor(model => model.AcDate, new { @class = "date" })
+                </div>
+                <div class="col-md-10" style="margin-top: 15px">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </fieldset>
+        }
+        <div id="displayAllActivities" style="display: none;">
+            <p>Tack för att förslå en ny aktivitet!</p>
+        </div>
+
+    </div>
+    </body>
+</html>
+    @section scripts
+    {
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script>
+            $('#addactivities').submit(function () {
+                $('#displayAllActivities').show()
+            });
+        </script>
+    }
+
+

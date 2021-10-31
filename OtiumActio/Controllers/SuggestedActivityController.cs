@@ -1,86 +1,56 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OtiumActio.Domain.Activities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using OtiumActio.Models;
 
 namespace OtiumActio.Controllers
 {
+    [Authorize]
     public class SuggestedActivityController : Controller
     {
-        //private static List<ActivityViewModel> ListOfAllActivities = new List<ActivityViewModel>();
-        //private readonly DataAccessLayer _dataAccess;
-        //public SuggestedActivityController(DataAccessLayer dataAccess)
-        //{
-        //    _dataAccess = dataAccess;
-        //}
+        private readonly IRepository<Activity> _repository;
+        private readonly OtiumActioContext _context;
+
+        public SuggestedActivityController(IRepository<Activity> repository, OtiumActioContext context)
+        {
+            _repository = repository;
+            _context = context;
+        }
         public IActionResult Index()
         {
-            //DataAccessLayer adl = new DataAccessLayer();
-            //var allCategories = adl.Categories.ToList();
-            //List<SelectListItem> categories = new List<SelectListItem>();
-            //foreach (var category in allCategories)
-            //{
-            //    categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
-            //}
-            //ViewData["SelectableCategories"] = categories;
-            return View("SuggestedActivity");
-        }
-        [HttpPost]
-        public IActionResult AddNewActivity(Activity model)
-        {
-            //DataAccessLayer adl = new DataAccessLayer();
-            //if (ModelState.IsValid)
-            //{
-            //var activity = new Activity
-            //{
-            //    //Id = 6,
-            //    Category = (int)model.Category, 
-            //    Description = model.Description,
-            //    Participants = model.Participants,
-            //    Date = model.Date
-
-            //};
-            //adl.AddActivity(activity);
-            //ModelState.Clear();
-            //}
-
-            //var allCategories = adl.Categories.ToList();
-            //List<SelectListItem> categories = new List<SelectListItem>();
-            //foreach (var category in allCategories)
-            //{
-            //    categories.Add(new SelectListItem { Text = category.Name.ToString(), Value = category.Id.ToString() });
-            //}
-            //ViewData["SelectableCategories"] = categories;
-
-            //return View("SuggestedActivity");
+            List<SelectListItem> categories = new List<SelectListItem>();
+            var allCategories = _context.Categories.Select(c => c).ToList();
+            foreach (var category in allCategories)
+            {
+                categories.Add(new SelectListItem { Text = category.CatName.ToString(), Value = category.CatId.ToString() });
+            }
+            ViewData["SelectableCategories"] = categories;
             return View();
         }
-        [HttpGet]
-        public IActionResult GetAllActivities()
-        {
-            Response.Cookies.Append("Cookie", "listFetched");
-            return PartialView("_addedActivities");
-        }
         [HttpPost]
-        public IActionResult Delete(long id)
+        public IActionResult AddNewActivity(Activity activity)
         {
-            //try
-            //{
-            //    ListOfAllActivities.Remove(ListOfAllActivities.Where(l => l.Id == id).FirstOrDefault());
-            //    TempData["Deleted"] = "Aktiviteten togs bort.";
+            if (ModelState.IsValid)
+            {
+                _repository.AddNewActivity(activity);
+                ModelState.Clear();
+            }
+            List<SelectListItem> categories = new List<SelectListItem>();
+            var allCategories = _context.Categories.Select(c => c).ToList();
+            foreach (var category in allCategories)
+            {
+                categories.Add(new SelectListItem { Text = category.CatName.ToString(), Value = category.CatId.ToString() });
+            }
+            ViewData["SelectableCategories"] = categories;
 
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
-            return RedirectToAction("Index");
-        }
-        public string Get(string key)
-        {
-            return Request.Cookies[key];
+            //return View("SuggestedActivity");
+            return View("Index");
         }
     }
 }

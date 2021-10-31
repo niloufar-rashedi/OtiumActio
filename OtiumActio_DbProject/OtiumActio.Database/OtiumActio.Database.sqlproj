@@ -64,6 +64,7 @@
     <Folder Include="Schemas\User\Tables" />
     <Folder Include="Schemas\User\Scripts" />
     <Folder Include="Schemas\Activity\StoredProcedures" />
+    <Folder Include="Schemas\User\StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schemas\Activity\Tables\Activity.sql" />
@@ -78,5 +79,6 @@
     <None Include="Schemas\Activity\StoredProcedures\GetAllActivities.sql" />
     <None Include="Schemas\Activity\StoredProcedures\UpdateActivity.sql" />
     <None Include="Schemas\Activity\StoredProcedures\GetActivityDetails.sql" />
+    <None Include="Schemas\User\StoredProcedure\UpdateParticipant.sql" />
   </ItemGroup>
 </Project>

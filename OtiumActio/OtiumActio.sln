@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Domain", "..\Oti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Infrastructure", "..\OtiumActio.Infrastructure\OtiumActio.Infrastructure.csproj", "{59B410D5-84DE-4A79-8207-AC5CF5DC5403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtiumActio.IdentityServer", "..\OtiumActio.IdentityServer\OtiumActio.IdentityServer.csproj", "{E7421494-CBE5-49A1-A867-F79C31FE11DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.IdentityServer", "..\OtiumActio.IdentityServer\OtiumActio.IdentityServer.csproj", "{E7421494-CBE5-49A1-A867-F79C31FE11DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtiumActio.Api", "..\OtiumActio.Api\OtiumActio.Api.csproj", "{A95D929A-4279-4394-9643-26690C8DB3D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtiumActio.Api", "..\OtiumActio.Api\OtiumActio.Api.csproj", "{A95D929A-4279-4394-9643-26690C8DB3D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtiumActio.EmailService", "..\OtiumActio.EmailService\OtiumActio.EmailService.csproj", "{B0E2C43A-1B74-49FA-9FB8-E3FC9BEC454F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{A95D929A-4279-4394-9643-26690C8DB3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95D929A-4279-4394-9643-26690C8DB3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95D929A-4279-4394-9643-26690C8DB3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E2C43A-1B74-49FA-9FB8-E3FC9BEC454F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E2C43A-1B74-49FA-9FB8-E3FC9BEC454F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E2C43A-1B74-49FA-9FB8-E3FC9BEC454F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E2C43A-1B74-49FA-9FB8-E3FC9BEC454F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

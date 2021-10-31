@@ -1,0 +1,30 @@
+﻿@model IEnumerable<OtiumActio.Models.Activity>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="keywords" content="Hitta sociala aktiviteter" />
+    @*<meta http-equiv="refresh" content="5; url = http://www.tutorialspoint.com" />*@
+</head>
+
+<body>
+    <div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card" style="max-width : 20rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.AcCategory</h5>
+                            <p class="card-text">@item.AcDescription </p>
+                            <p class="card-text">@item.AcDate.Value.ToShortDateString()</p>
+                            @Html.ActionLink("Detaljer", "GetActivityById", "Activity", new { id = item.AcId }, new { @class = "btn btn-primary", @role = "button" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+</body>
+</html>

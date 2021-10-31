@@ -1,42 +1,47 @@
-﻿@model IEnumerable<OtiumActio.Domain.Categories.Category>
+﻿@model IEnumerable<OtiumActio.Models.Category>
 @{
     ViewData["Title"] = "Otium Actio";
 }
-<div>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta name="keywords" content="Sociala aktiviteter, Matlöagning, Föreläsning, Bio, Naturvandring" />
+    <meta name="description" content="Sociala aktiviteter som kan skapas eller väljas emelan. OtiumActio är ett latiskt ord för Fritidsaktivitet, ett växande nätverk för gemensamma aktiviteter." />
+</head>
 
-    <div class="text-center">
-        <h1 class="display-4 ">Otium Actio</h1>
-        <h3>Ett latiskt ord för Fritidsaktivitet.</h3>
-        <h4>Ett nätverk för gemensamma aktiviteter. Skapa din egen, om det inte finns en här!</h4>
-        <p>Newest changes in the dev project</p>
-    </div>
-    <div class="text-center">
-        <a asp-controller="Activity" asp-action="Index">Klicka här för att se kommande aktiviteter</a>
-
-    </div>
-    <div class="text-center" style="margin-bottom: 15px;">
-        <button class="btn btn-primary btn-lg" type="button" id="allActivities">Kolla vad du har redan skapat</button>
-    </div>
-    <div id="listOfActivities" class="text-center"></div>
+<body>
     <div>
-        @*<p>All categories get through DAL </p>
-        @foreach (var item in Model)
-        {
-            <b>@item.AcName</b>
+        <div class="text-center">
+            <h1 class="display-4 ">Otium Actio</h1>
+            <h3>Ett latiskt ord för Fritidsaktivitet.</h3>
+            <h4>Ett nätverk för gemensamma aktiviteter. Skapa din egen, om det inte finns en här!</h4>
+            <h2>kommande aktiviteter...</h2>
+        </div>
 
-        }*@
+        <div id="listOfActivities"></div>
+
+        <div class="text-center" style="margin-bottom: 15px;">
+            <p>Inga passande aktiviteter? </p>
+        @Html.ActionLink("Skapa din egen!","Index", "SuggestedActivity");
+        </div>
     </div>
-
-</div>
-@section scripts
+    </body>
+</html>
+    @section scripts
     {
-    <script>
+        <script>
             $(document).ready(function () {
-                $("#allActivities").click(function () {
-                    $("#listOfActivities").load('@Url.Action("GetAllActivities", "SuggestedActivity")');
+                 var url = "@(Html.Raw(Url.Action("GetSelectedActivities", "Activity")))";
+                    $('#listOfActivities').load(url);
+                    });
+            function loadActivities() {
+                alert("hit the jquery function");
+                event.preventDefault();
+                $.get('@Url.ActionLink("GetSelectedActivities","Activity")',function(data){
+                    $('#listOfActivities').html(data);
                 })
-            });
-    </script>
-}
+                }
+        </script>
+    }
 

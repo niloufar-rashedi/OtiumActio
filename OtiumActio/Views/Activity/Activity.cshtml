@@ -1,83 +1,96 @@
-﻿@model IEnumerable<OtiumActio.Domain.Activities.Activity>
-<div>
+﻿@model IEnumerable<OtiumActio.Models.Activity>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="keywords" content="Sociala aktiviteter, OtiumActio, Sverige, Samhälle'" />
+    <meta http-equiv="refresh" content="5; url = https://localhost:44370/SuggestedActivity" />
+</head>
+
+<body>
+
     <div>
-        <p>Fetching data from Authorized api: @Html.ActionLink("Weather", "Weather")</p>
-    </div>
-    @using (Html.BeginForm())
-    {
-    <div class="row" >
-        <div class="col" style="max-width: 300px;">
-            @Html.TextBox("search") <input type="submit" name="submit" value="Sök efter beskrivning" class="col" />
-        </div>
-    </div>
-    }
-    @using (Html.BeginForm())
-    {
+        @*<div>
+                <p>Fetching data from Authorized api: @Html.ActionLink("Weather", "Weather")</p>
+            </div>
+            @using (Html.BeginForm())
+            {
+            <div class="row" >
+                <div class="col" style="max-width: 300px;">
+                    @Html.TextBox("search") <input type="submit" name="submit" value="Sök efter beskrivning" class="col" />
+                </div>
+            </div>
+            }
+            @using (Html.BeginForm())
+            {
 
-        <div style="max-width: 300px;">
-            <p>Sortera efter datum</p>
-            Från <input type="text" id="startDate" name="startDate" class="startDate form-control" />
-            Till <input type="text" id="endDate" name="endDate" class="endDate form-control" />
-            <input type="submit" value="Sök" class="btn btn-dark" />
-        </div>
-    }
+                <div style="max-width: 300px;">
+                    <p>Sortera efter datum</p>
+                    Från <input type="text" id="startDate" name="startDate" class="startDate form-control" />
+                    Till <input type="text" id="endDate" name="endDate" class="endDate form-control" />
+                    <input type="submit" value="Sök" class="btn btn-dark" />
+                </div>
+            }*@
 
-    @if (Model.Count() == 0)
-    {
-        <table id="activities">
-            <thead>
-                <tr>
-                    Ingen aktivitet hittades!
-                </tr>
-            </thead>
-        </table>
-
-    }
-    else
-    {
-
-        <table id="activities">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.ActionLink("Kategori", "Index", new { sort = "sotyByCategory" })
-                    </th>
-                    <th>
-                        Beskrivning
-                    </th>
-                    <th>Antal deltagande</th>
-                    <th>Datum</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var list in Model)
-                {
+        @if (Model.Count() == 0)
+        {
+            <table id="activities">
+                <thead>
                     <tr>
-                        @*<td>@list.AcCategory.CatName</td>*@
-                        <td>@list.AcDescription</td>
-                        <td>@list.Participants</td>
-                        <td>@list.AcDate</td>
-                        <td>
-                            @Html.ActionLink("Redigera", "Update", "Activity", new { id = list.AcId }, null) |
-                            @Html.ActionLink("Radera", "Delete", "Activity", new { id = list.AcId })
-                        </td>
-
+                        Ingen aktivitet hittades!
                     </tr>
+                </thead>
+            </table>
 
-                }
-            </tbody>
-        </table>
-    }
+        }
+        else
+        {
 
-    <div class="container" style="text-align: center">
-        <a asp-controller="SuggestedActivity" asp-action="Index">Skapa en ny aktivitet</a>
+            <table id="activities">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.ActionLink("Kategori", "Index", new { sort = "sotyByCategory" })
+                        </th>
+                        <th>
+                            Beskrivning
+                        </th>
+                        <th>Antal deltagande</th>
+                        <th>Datum</th>
+                        <th>Åtgärder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var list in Model)
+                    {
+                        <tr>
+                            <td>@list.AcCategoryId</td>
+                            <td>@list.AcDescription</td>
+                            <td>@list.AcParticipants</td>
+                            <td>@list.AcDate.Value.ToShortDateString()</td>
+                            <td>
+                                @Html.ActionLink("Redigera", "Update", "Activity", new { id = list.AcId }, null) |
+                                @Html.ActionLink("Radera", "Delete", "Activity", new { AcId = list.AcId }, null)
+                            </td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        }
+
+        <div class="container" style="text-align: center">
+            <a asp-controller="SuggestedActivity" asp-action="Index">Skapa en ny aktivitet</a>
+
+        </div>
 
     </div>
-
-</div>
-@section scripts
+    </body>
+</html>
+    @section scripts
     {
-    <script type="text/javascript">
+        <script type="text/javascript">
             $(function () {
                 $(".startDate").datepicker({
                     autoclose: true,
@@ -97,7 +110,7 @@
                     $('.startDate').datepicker('setEndDate', minDate);
                 });
             });
-    </script>
-}
+        </script>
+    }
 
 

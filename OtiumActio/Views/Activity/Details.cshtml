@@ -1,0 +1,26 @@
+﻿@model OtiumActio.Models.Activity
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    @*<meta name="keywords" content="Hitta sociala aktiviteter" />*@
+</head>
+
+<body>
+    <div>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="max-width : 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.AcCategory</h5>
+                        <p class="card-text">@Model.AcDescription </p>
+                        <p class="card-text">@Model.AcDate.Value.ToShortDateString()</p>
+                    </div>
+                </div>
+                @Html.ActionLink("Tillbaka","Index" , "Home" ) 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

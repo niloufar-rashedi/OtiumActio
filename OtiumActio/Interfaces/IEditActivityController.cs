@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OtiumActio.Domain.Activities;
+using OtiumActio.Models;
 
 namespace OtiumActio.Interfaces
 {
@@ -7,5 +7,7 @@ namespace OtiumActio.Interfaces
     {
         IActionResult Edit(int id);
         IActionResult UpdateActivity(Activity activity);
+        void Delete(int id);
+
     }
 }

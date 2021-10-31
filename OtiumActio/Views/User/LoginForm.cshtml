@@ -1,0 +1,49 @@
+﻿@model OtiumActio.Dto.ParticipantLoginDto
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="keywords" content="Logga in OtiumActio" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-5">
+                @using (Html.BeginForm("Authenticate", "User", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <fieldset>
+
+                        <div class="card">
+                            <div class="card-header">
+                                Logga in
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    @Html.Label("E-post")
+                                    @Html.EditorFor(m => m.PrtcUserName, "", new { @class = "form-control", @placeholder = "E-post" })
+                                    @Html.ValidationMessageFor(m => m.PrtcUserName, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Lösenord")
+                                    @Html.PasswordFor(m => m.PrtcPassword, new { @class = "form-control", @placeholder = "Lösenord" })
+                                    @Html.ValidationMessageFor(m => m.PrtcPassword, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                                    @Html.ActionLink("Jag har glömt mitt lösenord", "EnterEmail", "User")
+
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+            </div>
+        </div>
+</body>
+</html>
