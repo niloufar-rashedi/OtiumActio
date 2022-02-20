@@ -1,5 +1,4 @@
 # Enable syntax highlighting for files with `.gitattributes` extensions.
 #
 *.gitattributes linguist-language=gitattributes
-css/* linguist-vendored
-css/style.css linguist-vendored=false
+
