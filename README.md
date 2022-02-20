@@ -1,6 +1,6 @@
 # OtiumActio
 
-OtiumActio is a platform that enables users to organize social events in different categories and provide the chance to make people gather together and socialize with each other.
+OtiumActio is a platform that enables users to organize social events in different categories and provide the chance to make people gather together and socialize with each other. This project has been built in the framework of distance course Databasteknik och webbaserade System at University of Umeå under autumn semester 2021, in swedish language. Final report of project can be found here: https://github.com/niloufar-rashedi/OtiumActio/blob/master/5TF048_Projekt_NiloufarRashediB.pdf 
 
 ## Usage
 
