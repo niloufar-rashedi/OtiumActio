@@ -1,4 +1,4 @@
 # Enable syntax highlighting for files with `.gitattributes` extensions.
 #
 *.gitattributes linguist-language=gitattributes
-css/* linguist-vendored
+*.gs linguist-language=C#
